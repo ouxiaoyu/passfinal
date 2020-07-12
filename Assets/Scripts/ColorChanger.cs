@@ -6,27 +6,35 @@ using UnityEngine;
 public class ColorChanger : MonoBehaviour
 {
     public static Boolean isUpdate = false;
-    GameObject[,] colorArray = new GameObject[7,25];
-    public static int[] array;
+    GameObject[,] colorArray = new GameObject[4, 25];
+    GameObject[,] itemArray = new GameObject[4, 25];
+
+
+    public static int[,] array;
 
     void Start()
     {
-        for (int j = 0; j < 7; j++)
+        for (int j = 0; j < 4; j++)
         {
             String name = null;
+            String item = null;
             switch (j)
             {
-                case 0: name = "Red"; break;
-                case 1: name = "Orange"; break;
-                case 2: name = "Green"; break;
-                case 3: name = "LightBlue"; break;
-                case 4: name = "Blue"; break;
-                case 5: name = "Purple"; break;
-                case 6: name = "Pink"; break;
+                case 0: name = "Red"; item = "SpeedUp"; break;
+                case 1: name = "Orange"; item = "SpeedDown"; break;
+                case 2: name = "Green"; item = "Protection"; break;
+                case 3: name = "Blue"; item = "Colorful"; break;
             }
             for (int i = 0; i < 25; i++)
             {
                 colorArray[j,i] = GameObject.Find(name+" (" + (i + 1) + ")");
+                colorArray[j,i].SetActive(false);
+                if (item != null)
+                {
+                    itemArray[j, i] = GameObject.Find(item + " (" + (i + 1) + ")");
+                    itemArray[j, i].SetActive(false);
+                }
+                
             }
         }
         
@@ -36,18 +44,23 @@ public class ColorChanger : MonoBehaviour
     {
         if (isUpdate)
         {
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < 4; j++)
             {
                 for (int i = 0; i < 25; i++)
                 {
                     colorArray[j, i].SetActive(false);
-                    GameObject.Find("Shape").tag = "Red";
                 }
             }
-
-            for (int i = 0; i < array.Length; i++)
+            for (int j = 0; j < 4; j++)
             {
-                switch (array[i])
+                for (int i = 0; i < 25; i++)
+                {
+                    itemArray[j, i].SetActive(false);
+                }
+            }
+            for (int i = 0; i < 25; i++)
+            {
+                switch (array[1,i])
                 {
                     case 4:
                         colorArray[0,i].SetActive(true);
@@ -62,18 +75,22 @@ public class ColorChanger : MonoBehaviour
                         colorArray[3,i].SetActive(true);
                         break;
                     case 8:
-                        colorArray[4,i].SetActive(true);
+                        itemArray[0,i].SetActive(true);
                         break;
                     case 9:
-                        colorArray[5,i].SetActive(true);
+                        itemArray[1,i].SetActive(true);
                         break;
                     case 10:
-                        colorArray[6,i].SetActive(true);
+                        itemArray[2,i].SetActive(true);
                         break;
-                    defalt: break;
+                    case 11:
+                        itemArray[3, i].SetActive(true);
+                        break;
+                    default: break;
                 }
             }
             isUpdate = false;
+            //MovableCube.setMovableCube = true;
         }
     }
 

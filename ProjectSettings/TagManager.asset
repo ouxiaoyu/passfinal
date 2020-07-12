@@ -8,11 +8,13 @@ TagManager:
   - Red
   - Orange
   - Green
-  - LightBlue
   - Blue
-  - Purple
-  - Pink
   - MovableCube
+  - Undefined
+  - SpeedUp
+  - SpeedDown
+  - Protection
+  - Colorful
   layers:
   - Default
   - TransparentFX

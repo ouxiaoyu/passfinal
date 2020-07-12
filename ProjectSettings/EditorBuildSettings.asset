@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/PlayScene.unity
     guid: b68a58dcf8d4d0d40a61d1d340920304
   - enabled: 1
-    path: Assets/Scenes/FailMenu.unity
-    guid: 3aaf6dc8beebd1943aeaefb92595f872
+    path: Assets/Scenes/Tutorial.unity
+    guid: 5857c50abc01ab94e971425243896043
   m_configObjects: {}
